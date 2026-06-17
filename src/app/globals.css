@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #1B4332;
+  --green-light: #2D6A4F;
+  --green-dark: #0d2b1d;
+  --sage: #95D5B2;
+  --sage-light: #B7E4C7;
+  --cream: #FAF7F2;
+  --cream-dark: #F0EAE0;
+  --gold: #D4A373;
+  --gold-light: #E9C46A;
+  --charcoal: #2B2D42;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-playfair;
+  }
+
+  ::selection {
+    background-color: var(--sage);
+    color: var(--green-dark);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gold text-green font-semibold font-inter
+           transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:-translate-y-0.5
+           active:translate-y-0 active:shadow-md;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-white text-white font-semibold font-inter
+           transition-all duration-300 hover:bg-white hover:text-green hover:-translate-y-0.5;
+  }
+
+  .btn-outline-green {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-green text-green font-semibold font-inter
+           transition-all duration-300 hover:bg-green hover:text-white hover:-translate-y-0.5;
+  }
+
+  /* ── Section Headers ── */
+  .section-tag {
+    @apply inline-block font-inter text-xs font-semibold tracking-[0.2em] uppercase text-green mb-3;
+  }
+
+  .section-title {
+    @apply font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-green leading-tight;
+  }
+
+  .section-subtitle {
+    @apply font-inter text-base md:text-lg text-charcoal/70 leading-relaxed max-w-2xl;
+  }
+
+  /* ── Cards ── */
+  .product-card {
+    @apply bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1;
+  }
+
+  .blog-card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+
+  /* ── Form Elements ── */
+  .form-input {
+    @apply w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white font-inter text-charcoal text-sm
+           placeholder:text-gray-400 focus:outline-none focus:border-green focus:ring-2 focus:ring-green/10
+           transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block font-inter text-sm font-medium text-charcoal mb-1.5;
+  }
+
+  /* ── Divider ── */
+  .ornament-divider {
+    @apply flex items-center gap-4 my-6;
+  }
+
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-green/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-green {
+    background: linear-gradient(135deg, var(--sage), var(--sage-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero {
+    background: linear-gradient(160deg, #0d2b1d 0%, #1B4332 50%, #2D6A4F 100%);
+  }
+
+  .glass-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .leaf-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2395D5B2' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
